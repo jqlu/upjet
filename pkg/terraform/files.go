@@ -161,6 +161,13 @@ func (fp *FileProducer) BuildMainTF() map[string]any {
 					"version": fp.Setup.Requirement.Version,
 				},
 			},
+			"backend": map[string]any{
+				"kubernetes": map[string]any{
+					"secret_suffix":     "capi",
+					"namespace":         "kube-system",
+					"in_cluster_config": true,
+				},
+			},
 		},
 		"provider": map[string]any{
 			providerSource[len(providerSource)-1]: fp.Setup.Configuration,
