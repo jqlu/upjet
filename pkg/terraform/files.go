@@ -161,6 +161,12 @@ func (fp *FileProducer) WriteMainTF() (ProviderHandle, error) {
 					"version": fp.Setup.Requirement.Version,
 				},
 			},
+			"backend": map[string]any{
+				"kubernetes": map[string]any{
+					"secret_suffix": "capi",
+					"namespace":     "kube-system",
+				},
+			},
 		},
 		"provider": map[string]any{
 			providerSource[len(providerSource)-1]: fp.Setup.Configuration,
